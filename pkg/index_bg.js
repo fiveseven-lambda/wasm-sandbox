@@ -29,8 +29,6 @@ function addHeapObject(obj) {
     const idx = heap_next;
     heap_next = heap[idx];
 
-    if (typeof(heap_next) !== 'number') throw new Error('corrupt heap');
-
     heap[idx] = obj;
     return idx;
 }
@@ -48,138 +46,30 @@ function takeObject(idx) {
     dropObject(idx);
     return ret;
 }
-
-function logError(f, args) {
-    try {
-        return f.apply(this, args);
-    } catch (e) {
-        let error = (function () {
-            try {
-                return e instanceof Error ? `${e.message}\n\nStack:\n${e.stack}` : e.toString();
-            } catch(_) {
-                return "<failed to stringify thrown value>";
-            }
-        }());
-        console.error("wasm-bindgen: imported JS function that was not marked as `catch` threw an error:", error);
-        throw e;
-    }
-}
 /**
 */
 export function main_js() {
     wasm.main_js();
 }
 
-let WASM_VECTOR_LEN = 0;
-
-const lTextEncoder = typeof TextEncoder === 'undefined' ? (0, module.require)('util').TextEncoder : TextEncoder;
-
-let cachedTextEncoder = new lTextEncoder('utf-8');
-
-const encodeString = (typeof cachedTextEncoder.encodeInto === 'function'
-    ? function (arg, view) {
-    return cachedTextEncoder.encodeInto(arg, view);
-}
-    : function (arg, view) {
-    const buf = cachedTextEncoder.encode(arg);
-    view.set(buf);
-    return {
-        read: arg.length,
-        written: buf.length
-    };
-});
-
-function passStringToWasm0(arg, malloc, realloc) {
-
-    if (typeof(arg) !== 'string') throw new Error('expected a string argument');
-
-    if (realloc === undefined) {
-        const buf = cachedTextEncoder.encode(arg);
-        const ptr = malloc(buf.length);
-        getUint8Memory0().subarray(ptr, ptr + buf.length).set(buf);
-        WASM_VECTOR_LEN = buf.length;
-        return ptr;
-    }
-
-    let len = arg.length;
-    let ptr = malloc(len);
-
-    const mem = getUint8Memory0();
-
-    let offset = 0;
-
-    for (; offset < len; offset++) {
-        const code = arg.charCodeAt(offset);
-        if (code > 0x7F) break;
-        mem[ptr + offset] = code;
-    }
-
-    if (offset !== len) {
-        if (offset !== 0) {
-            arg = arg.slice(offset);
-        }
-        ptr = realloc(ptr, len, len = offset + arg.length * 3);
-        const view = getUint8Memory0().subarray(ptr + offset, ptr + len);
-        const ret = encodeString(arg, view);
-        if (ret.read !== arg.length) throw new Error('failed to pass whole string');
-        offset += ret.written;
-    }
-
-    WASM_VECTOR_LEN = offset;
-    return ptr;
-}
-
-let cachegetInt32Memory0 = null;
-function getInt32Memory0() {
-    if (cachegetInt32Memory0 === null || cachegetInt32Memory0.buffer !== wasm.memory.buffer) {
-        cachegetInt32Memory0 = new Int32Array(wasm.memory.buffer);
-    }
-    return cachegetInt32Memory0;
-}
-
-export function __wbg_alert_4914cfe43bafd4ba() { return logError(function (arg0, arg1) {
-    alert(getStringFromWasm0(arg0, arg1));
-}, arguments) };
-
 export function __wbindgen_string_new(arg0, arg1) {
     var ret = getStringFromWasm0(arg0, arg1);
     return addHeapObject(ret);
 };
 
-export function __wbg_error_09919627ac0992f5() { return logError(function (arg0, arg1) {
-    try {
-        console.error(getStringFromWasm0(arg0, arg1));
-    } finally {
-        wasm.__wbindgen_free(arg0, arg1);
-    }
-}, arguments) };
-
-export function __wbg_new_693216e109162396() { return logError(function () {
-    var ret = new Error();
-    return addHeapObject(ret);
-}, arguments) };
-
-export function __wbg_stack_0ddaca5d1abfb52f() { return logError(function (arg0, arg1) {
-    var ret = getObject(arg1).stack;
-    var ptr0 = passStringToWasm0(ret, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
-    var len0 = WASM_VECTOR_LEN;
-    getInt32Memory0()[arg0 / 4 + 1] = len0;
-    getInt32Memory0()[arg0 / 4 + 0] = ptr0;
-}, arguments) };
+export function __wbg_log_fbd13631356d44e4(arg0) {
+    console.log(getObject(arg0));
+};
 
 export function __wbindgen_object_drop_ref(arg0) {
     takeObject(arg0);
 };
 
-export function __wbg_log_fbd13631356d44e4() { return logError(function (arg0) {
-    console.log(getObject(arg0));
-}, arguments) };
+export function __wbg_alert_4914cfe43bafd4ba(arg0, arg1) {
+    alert(getStringFromWasm0(arg0, arg1));
+};
 
 export function __wbindgen_throw(arg0, arg1) {
     throw new Error(getStringFromWasm0(arg0, arg1));
-};
-
-export function __wbindgen_rethrow(arg0) {
-    throw takeObject(arg0);
 };
 
