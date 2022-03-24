@@ -1,0 +1,12 @@
+/home/toga/work/wasm-sandbox/target/release/deps/proc_macro2-34358a99afdb91ab.rmeta: /home/toga/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/lib.rs /home/toga/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/marker.rs /home/toga/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/parse.rs /home/toga/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/detection.rs /home/toga/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/fallback.rs /home/toga/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/wrapper.rs
+
+/home/toga/work/wasm-sandbox/target/release/deps/libproc_macro2-34358a99afdb91ab.rlib: /home/toga/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/lib.rs /home/toga/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/marker.rs /home/toga/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/parse.rs /home/toga/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/detection.rs /home/toga/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/fallback.rs /home/toga/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/wrapper.rs
+
+/home/toga/work/wasm-sandbox/target/release/deps/proc_macro2-34358a99afdb91ab.d: /home/toga/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/lib.rs /home/toga/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/marker.rs /home/toga/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/parse.rs /home/toga/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/detection.rs /home/toga/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/fallback.rs /home/toga/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/wrapper.rs
+
+/home/toga/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/lib.rs:
+/home/toga/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/marker.rs:
+/home/toga/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/parse.rs:
+/home/toga/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/detection.rs:
+/home/toga/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/fallback.rs:
+/home/toga/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.36/src/wrapper.rs:
