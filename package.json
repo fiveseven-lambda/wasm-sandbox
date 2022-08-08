@@ -1,19 +1,14 @@
 {
-  "author": "You <you@example.com>",
-  "name": "rust-webpack-template",
-  "version": "0.1.0",
+  "name": "wasm-sandbox",
   "scripts": {
-    "build": "rimraf dist pkg && webpack",
-    "start": "rimraf dist pkg && webpack-dev-server --open -d",
-    "test": "cargo test && wasm-pack test --headless",
-    "deploy": "npm run build && gh-pages -d dist"
+    "build": "webpack --mode=production",
+    "start": "webpack-dev-server --mode=development --open"
   },
   "devDependencies": {
-    "@wasm-tool/wasm-pack-plugin": "^1.1.0",
-    "copy-webpack-plugin": "^5.0.3",
-    "webpack": "^4.42.0",
-    "webpack-cli": "^3.3.3",
-    "webpack-dev-server": "^3.7.1",
-    "rimraf": "^3.0.0"
+    "@wasm-tool/wasm-pack-plugin": "^1.6.0",
+    "html-webpack-plugin": "^5.5.0",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.9.3"
   }
 }
